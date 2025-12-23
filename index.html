@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TinyTalk Feed</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>TinyTalk</h1>
+        <button id="themeToggle">🌓</button>
+        <a href="profile.html">Profile</a>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <main>
+        <section id="tweetForm">
+            <textarea id="tweetContent" placeholder="What's up?"></textarea>
+            <input type="text" id="tweetGif" placeholder="GIF URL (optional)">
+            <button id="postTweetBtn">Post</button>
+        </section>
+
+        <section id="feed">
+            <!-- Tweets appear here -->
+        </section>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
 

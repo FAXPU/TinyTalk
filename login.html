@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TinyTalk Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <h1>Login / Signup</h1>
+
+        <div id="authForm">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button id="loginBtn">Login</button>
+            <button id="signupBtn">Sign Up</button>
+        </div>
+
+        <div>
+            <button id="googleBtn">Login with Google</button>
+        </div>
+    </main>
+
+    <script type="module">
+        import { auth } from "./firebase-config.js";
+        import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js";
+
+        const emailInput = document.getElementById("email");
+        const passInput = document.getElementById("password");
+        const loginBtn = document.getElementById("loginBtn");
+        const signupBtn = document.getElementById("signupBtn");
+        const googleBtn = document.getElementById("googleBtn");
+
+        loginBtn.addEventListener("click", async () => {
+            try {
+                await signInWithEmailAndPassword(auth, emailInput.value, passInput.value);
+                window.location.href = "index.html";
+            } catch(e) { alert(e.message); }
+        });
+
+        signupBtn.addEventListener("click", async () => {
+            try {
+                await createUserWithEmailAndPassword(auth, emailInput.value, passInput.value);
+                window.location.href = "index.html";
+            } catch(e) { alert(e.message); }
+        });
+
+        googleBtn.addEventListener("click", async () => {
+            const provider = new GoogleAuthProvider();
+            try {
+                await signInWithPopup(auth, provider);
+                window.location.href = "index.html";
+            } catch(e) { alert(e.message); }
+        });
+    </script>
+</body>
+</html>
 
